@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div class="container">
+
+    <h1 class="app-title">Pomodoro Timer</h1>
+    <p class="subtitle">Stay focused. Rest well. Repeat.</p>
+
+    <!-- MODE TABS -->
+    <div class="mode-tabs">
+      <button class="mode-btn active" id="btn-pomodoro" onclick="switchMode('pomodoro')">Pomodoro</button>
+      <button class="mode-btn" id="btn-short" onclick="switchMode('short')">Short Break</button>
+      <button class="mode-btn" id="btn-long" onclick="switchMode('long')">Long Break</button>
+    </div>
+
+    <!-- TIMER CIRCLE -->
+    <div class="timer-wrap">
+      <svg class="progress-ring" viewBox="0 0 220 220">
+        <circle class="ring-bg" cx="110" cy="110" r="96"/>
+        <circle class="ring-progress" id="ringProgress" cx="110" cy="110" r="96"/>
+      </svg>
+      <div class="timer-inner">
+        <div class="timer-display" id="timerDisplay">25:00</div>
+        <div class="timer-mode" id="timerMode">Focus Time</div>
+      </div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="controls">
+      <button class="ctrl-btn" onclick="resetTimer()">↺</button>
+      <button class="start-btn" id="startBtn" onclick="toggleTimer()">Start</button>
+      <button class="ctrl-btn" onclick="skipSession()">⏭</button>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+      <div class="stat-box">
+        <span id="pomodoroCount">0</span>
+        <label>Pomodoros</label>
+      </div>
+      <div class="stat-box">
+        <span id="focusTime">0m</span>
+        <label>Focus Time</label>
+      </div>
+      <div class="stat-box">
+        <span id="currentStreak">0</span>
+        <label>Streak</label>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="settings">
+      <h3>Settings</h3>
+      <div class="settings-grid">
+        <div class="setting-item">
+          <label>Pomodoro (min)</label>
+          <input type="number" id="setPomodoro" value="25" min="1" max="60" onchange="updateSettings()"/>
+        </div>
+        <div class="setting-item">
+          <label>Short Break (min)</label>
+          <input type="number" id="setShort" value="5" min="1" max="30" onchange="updateSettings()"/>
+        </div>
+        <div class="setting-item">
+          <label>Long Break (min)</label>
+          <input type="number" id="setLong" value="15" min="1" max="60" onchange="updateSettings()"/>
+        </div>
+        <div class="setting-item">
+          <label>Long Break After</label>
+          <input type="number" id="setLongAfter" value="4" min="1" max="10" onchange="updateSettings()"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESSION LOG -->
+    <div class="session-log">
+      <h3>Session Log</h3>
+      <ul id="sessionLog">
+        <li class="log-empty">No sessions yet — start your first pomodoro!</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer>Day 13 of 120 · Kishalaya Sarangi · NIT Rourkela</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
